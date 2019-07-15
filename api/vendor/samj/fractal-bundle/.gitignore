@@ -1,0 +1,4 @@
+vendor
+tests/Fixtures/logs
+tests/Fixtures/cache
+.idea

@@ -1,0 +1,117 @@
+<?php return [PHP_INT_MAX, static function () {
+
+    return \Symfony\Component\VarExporter\Internal\Hydrator::hydrate(
+        $o = [
+            clone (($p = &\Symfony\Component\VarExporter\Internal\Registry::$prototypes)['Swagger\\Annotations\\Response'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Response')),
+            clone ($p['Swagger\\Context'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Context')),
+            clone $p['Swagger\\Annotations\\Response'],
+            clone $p['Swagger\\Context'],
+            clone ($p['Swagger\\Annotations\\Parameter'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Parameter')),
+            clone $p['Swagger\\Context'],
+            clone $p['Swagger\\Annotations\\Parameter'],
+            clone $p['Swagger\\Context'],
+            clone ($p['Swagger\\Annotations\\Tag'] ?? \Symfony\Component\VarExporter\Internal\Registry::p('Swagger\\Annotations\\Tag')),
+            clone $p['Swagger\\Context'],
+        ],
+        null,
+        [
+            'stdClass' => [
+                'response' => [
+                    200,
+                    2 => 500,
+                ],
+                'description' => [
+                    'Returns users collection with pagination',
+                    2 => 'Returns error',
+                    4 => 'current page',
+                    6 => 'limit per page',
+                ],
+                '_context' => [
+                    $o[1],
+                    2 => $o[3],
+                    4 => $o[5],
+                    6 => $o[7],
+                    8 => $o[9],
+                ],
+                'filename' => [
+                    1 => '/code/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    3 => '/code/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    5 => '/code/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    7 => '/code/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                    9 => '/code/vendor/doctrine/annotations/lib/Doctrine/Common/Annotations/DocParser.php',
+                ],
+                'line' => [
+                    1 => 827,
+                    3 => 827,
+                    5 => 827,
+                    7 => 827,
+                    9 => 827,
+                ],
+                'method' => [
+                    1 => 'Annotation',
+                    3 => 'Annotation',
+                    5 => 'Annotation',
+                    7 => 'Annotation',
+                    9 => 'Annotation',
+                ],
+                'class' => [
+                    1 => 'DocParser',
+                    3 => 'DocParser',
+                    5 => 'DocParser',
+                    7 => 'DocParser',
+                    9 => 'DocParser',
+                ],
+                'namespace' => [
+                    1 => 'Doctrine\\Common\\Annotations',
+                    3 => 'Doctrine\\Common\\Annotations',
+                    5 => 'Doctrine\\Common\\Annotations',
+                    7 => 'Doctrine\\Common\\Annotations',
+                    9 => 'Doctrine\\Common\\Annotations',
+                ],
+                'annotations' => [
+                    1 => [
+                        $o[0],
+                    ],
+                    3 => [
+                        $o[2],
+                    ],
+                    5 => [
+                        $o[4],
+                    ],
+                    7 => [
+                        $o[6],
+                    ],
+                    9 => [
+                        $o[8],
+                    ],
+                ],
+                'name' => [
+                    4 => 'page',
+                    6 => 'per_page',
+                    8 => 'users',
+                ],
+                'in' => [
+                    4 => 'query',
+                    6 => 'query',
+                ],
+                'type' => [
+                    4 => 'integer',
+                    6 => 'integer',
+                ],
+                'default' => [
+                    4 => '1',
+                    6 => '10',
+                ],
+            ],
+        ],
+        [
+            $o[0],
+            $o[2],
+            $o[4],
+            $o[6],
+            $o[8],
+        ],
+        []
+    );
+
+}];

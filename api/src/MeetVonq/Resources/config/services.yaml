@@ -1,0 +1,33 @@
+imports:
+  - { resource: "transformers.yaml"}
+
+services:
+  ## here will be project's services
+
+  project.event_listener.api_exception:
+     class: App\MeetVonq\App\EventListener\ApiExceptionListener
+     arguments: ['%%kernel.debug%%']
+     tags:
+         - { name: kernel.event_listener, event: kernel.exception, method: onKernelException, priority: 200 }
+
+  ## Fractal Service
+  project.fractal.manager:
+       class: App\MeetVonq\App\Support\FractalService
+       public: true
+       arguments: ['%siteUrl%']
+  App\MeetVonq\App\Support\FractalService: '@project.fractal.manager'
+
+  ## MeetVonq User Service
+  project.user.service:
+      class: App\MeetVonq\Domain\User\UserService
+      arguments: ['@doctrine.orm.entity_manager','@project.fractal.manager','@project.user.transformer']
+  App\MeetVonq\Domain\User\UserService: '@project.user.service'
+
+  ## make fos oauth service public
+  fos_oauth_server.client_manager.default:
+      class: FOS\OAuthServerBundle\Entity\ClientManager
+      public: true
+      arguments: ['@Doctrine\ORM\EntityManagerInterface','%fos_oauth_server.model.client.class%']
+
+  FOS\OAuthServerBundle\Model\AccessTokenManagerInterface:
+      alias: fos_oauth_server.access_token_manager.default
