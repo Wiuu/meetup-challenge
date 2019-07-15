@@ -18,6 +18,43 @@ services:
     networks:
     - code-network
 
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+    - 8021:80
+    links:
+    - mysql
+    environment:
+      PMA_HOST: mysql
+    networks:
+    - code-network
+
+  mysql:
+    image: mysql:5.7
+    ports:
+    - 3306:3306
+    volumes:
+    - db_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: vonq
+      MYSQL_USER: vonq
+      MYSQL_PASSWORD: vonq
+    networks:
+    - code-network
+
+  redis:
+    image: redis
+    ports:
+    - 6379:6379
+    expose:
+    - 6379
+    networks:
+    - code-network
+
+volumes:
+  db_data:
+
 networks:
   code-network:
     driver: bridge
