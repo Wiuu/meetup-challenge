@@ -1,0 +1,6 @@
+services:
+    project.article.transformer:
+        class: App\MeetVonq\Domain\Article\ArticleTransformer
+
+    project.user.transformer:
+        class: App\MeetVonq\Domain\User\UserTransformer

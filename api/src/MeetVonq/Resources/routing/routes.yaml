@@ -1,0 +1,10 @@
+
+users.get:
+    path: "/api/users"
+    methods: GET
+    controller: App\MeetVonq\Http\Controller\UserController:index
+
+users.get.by.id:
+    path: "/api/user/{id}"
+    methods: GET
+    controller: App\MeetVonq\Http\Controller\UserController:user
