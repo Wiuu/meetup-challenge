@@ -57,7 +57,6 @@ class OAuthAuthorizeController extends AuthorizeController {
      */
     public function authorize(Request $request)
     {
-        return new JsonResponse(['test']);
         return parent::authorizeAction($request);
     }
 }
