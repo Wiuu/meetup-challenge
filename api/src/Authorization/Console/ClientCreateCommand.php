@@ -46,6 +46,6 @@ class ClientCreateCommand extends ContainerAwareCommand
 
         $responseJson = (array) json_decode($response->getContent());
 
-        $output->writeln(sprintf('Here is your acccess token: "Bearer <info>%s</info>"', $responseJson['access_token']));
+        $output->writeln(sprintf('"Bearer <info>%s</info>"', $responseJson['access_token']));
     }
 }

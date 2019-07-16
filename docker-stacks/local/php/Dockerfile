@@ -89,7 +89,6 @@ RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local
     chown www-data: /var/www/.composer
 
 RUN echo "export PATH=${PATH}:/code/vendor/bin" >> ~/.bashrc
-
 #
 #--------------------------------------------------------------------------
 # Final Touch

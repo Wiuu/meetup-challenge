@@ -1,3 +1,7 @@
+users.create:
+    path: "/api/user/create"
+    methods: POST
+    controller: App\MeetVonq\Http\Controller\UserController:create
 
 users.get:
     path: "/api/users"

@@ -20,7 +20,7 @@ services:
   ## MeetVonq User Service
   project.user.service:
       class: App\MeetVonq\Domain\User\UserService
-      arguments: ['@doctrine.orm.entity_manager','@project.fractal.manager','@project.user.transformer']
+      arguments: ['@doctrine.orm.entity_manager','@project.fractal.manager','@project.user.transformer', '@Doctrine\Common\Persistence\ObjectManager']
   App\MeetVonq\Domain\User\UserService: '@project.user.service'
 
   ## make fos oauth service public
