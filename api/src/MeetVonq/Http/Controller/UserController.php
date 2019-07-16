@@ -99,4 +99,52 @@ class UserController
             return new JsonResponse($this->fractalService->transform($exception->getMessage(), false), Response::HTTP_NO_CONTENT);
         }
     }
+
+    /**
+     * @param Request $request
+     * @return JsonResponse
+     * @SWG\Response(
+     *     response=200,
+     *     description="returns success message"
+     * )
+     * @SWG\Response(
+     *     response=500,
+     *     description="Returns error"
+     * )
+     *
+     * @SWG\Parameter(
+     *     name="username",
+     *     in="formData",
+     *     type="string",
+     *     required=true,
+     *     description="user alias"
+     * )
+     * @SWG\Parameter(
+     *     name="email",
+     *     in="formData",
+     *     type="string",
+     *     required=true,
+     *     description="user email"
+     * )
+     * @SWG\Parameter(
+     *     name="password",
+     *     in="formData",
+     *     type="string",
+     *     required=true,
+     *     description="user password"
+     * )
+     *     description="creates a new user"
+     * )
+     * @SWG\Tag(name="users")
+     */
+    public function create(Request $request)
+    {
+        try {
+            $user = $this->userService->createNewUser($request);
+            return new JsonResponse($this->fractalService->transform($user));
+
+        }catch (\Exception $exception) {
+            return new JsonResponse($this->fractalService->transform($exception->getMessage(), false), Response::HTTP_NO_CONTENT);
+        }
+    }
 }

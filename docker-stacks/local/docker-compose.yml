@@ -13,7 +13,7 @@ services:
     image: php:7.2-fpm-alpine
     volumes:
     - ./../../api:/code
-    - ./log.conf:/usr/local/etc/php-fpm.d/zz-log.conf
+    - ./log:/usr/local/etc/php-fpm.d/zz-log.conf
     build:
       context: ./php/
     networks:
@@ -44,7 +44,6 @@ services:
       MYSQL_DATABASE: vonq
       MYSQL_USER: vonq
       MYSQL_PASSWORD: vonq
-
 
   redis:
     image: redis

@@ -7,8 +7,10 @@ namespace App\MeetVonq\Domain\User;
 use App\MeetVonq\App\Support\FractalService;
 use App\MeetVonq\Domain\User\Entity\User;
 use App\MeetVonq\Infrastructure\User\UserRepository;
+use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityNotFoundException;
+use Gedmo\Exception;
 use League\Fractal\Pagination\PagerfantaPaginatorAdapter;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
@@ -33,17 +35,23 @@ class UserService
      * @var UserTransformer
      */
     private $userTransformer;
+    /**
+     * @var objectManager
+     */
+    private $om;
 
     public function __construct(
         EntityManagerInterface $entityManager,
         FractalService $fractalService,
-        UserTransformer $userTransformer
+        UserTransformer $userTransformer,
+        ObjectManager $om
     )
     {
 
         $this->entityManager = $entityManager;
         $this->fractalService = $fractalService;
         $this->userTransformer = $userTransformer;
+        $this->om = $om;
     }
 
     public function listUsers(Request $request, RouterInterface $router)
@@ -83,5 +91,18 @@ class UserService
 
         return new Item($user, $this->userTransformer, 'user');
 
+    }
+
+    public function createNewUser(Request $request)
+    {
+        $user = new User();
+        $user->setUsername($request->get('username'));
+        $user->setEmail($request->get('email'));
+        $user->setPassword(sha1($request->get('password')));
+
+        $this->om->persist($user);
+        $this->om->flush();
+
+        return new Item($user, $this->userTransformer, 'user');
     }
 }
