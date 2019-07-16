@@ -7,6 +7,9 @@ use Symfony\Bundle\FrameworkBundle\Command\ContainerAwareCommand;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\HttpClient\CurlHttpClient;
+use Symfony\Component\HttpFoundation\Request;
+
 class ClientCreateCommand extends ContainerAwareCommand
 
 {
@@ -34,6 +37,15 @@ class ClientCreateCommand extends ContainerAwareCommand
         $client->setRedirectUris($input->getOption('redirect-uri'));
         $client->setAllowedGrantTypes([$input->getOption('grant-type')]);
         $this->clientManager->updateClient($client);
-        $output->writeln(sprintf('Added a new client with  public id <info>%s</info>.', $client->getPublicId()));
+
+
+        $url = urldecode("http://127.0.0.1:8080/oauth/v2/token?client_id=".$client->getPublicId()."&client_secret=".$client->getSecret()."&grant_type=client_credentials");
+
+        $httpClient = new CurlHttpClient();
+        $response = $httpClient->request('GET', $url);
+
+        $responseJson = (array) json_decode($response->getContent());
+
+        $output->writeln(sprintf('Here is your acccess token: "Bearer <info>%s</info>"', $responseJson['access_token']));
     }
 }
