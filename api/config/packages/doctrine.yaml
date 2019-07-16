@@ -20,7 +20,7 @@ doctrine:
                 dir: '%kernel.project_dir%/src/Authorization/Entity/Oauth2'
                 prefix: 'App\Authorization\Entity\Oauth2'
                 alias: App
-            Project:
+            MeetVonq:
                 is_bundle: false
                 type: yml
                 dir: '%kernel.project_dir%/src/MeetVonq/Resources/doctrine/mapping'
