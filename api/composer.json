@@ -23,7 +23,10 @@
         "symfony/twig-bundle": "^4.0",
         "symfony/validator": "^4.0",
         "symfony/var-dumper": "^4.0",
-        "symfony/yaml": "^4.0"
+        "symfony/yaml": "^4.0",
+        "symfony/messenger": "^4.2",
+        "symfony/monolog-bundle": "^3.3",
+        "lambdish/phunctional": "^1.0"
     },
     "require-dev": {
         "doctrine/doctrine-fixtures-bundle": "^3.0",

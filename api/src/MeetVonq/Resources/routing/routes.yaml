@@ -12,3 +12,8 @@ users.get.by.id:
     path: "/api/user/{id}"
     methods: GET
     controller: App\MeetVonq\Http\Controller\UserController:user
+
+groups.get:
+    path: "/api/group/{id}"
+    methods: GET
+    controller: App\MeetVonq\Http\Controller\GroupController:get

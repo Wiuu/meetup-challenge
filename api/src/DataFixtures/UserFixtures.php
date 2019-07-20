@@ -22,6 +22,15 @@ class UserFixtures extends Fixture implements OrderedFixtureInterface
         $manager->persist($user);
         $manager->flush();
 
+        for ($i=2;$i<=15;$i++) {
+            $fakeuser = new User();
+            $fakeuser->setUsername($faker->userName);
+            $fakeuser->setEmail("user".$i."@example.com");
+            $fakeuser->setPassword(sha1('secret'));
+            $manager->persist($fakeuser);
+            $manager->flush();
+        }
+
         $this->addReference(self::TEST_USER, $user);
     }
 

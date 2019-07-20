@@ -86,8 +86,14 @@
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
+    "lambdish/phunctional": {
+        "version": "v1.0.8"
+    },
     "league/fractal": {
         "version": "0.17.0"
+    },
+    "monolog/monolog": {
+        "version": "1.24.0"
     },
     "nelmio/api-doc-bundle": {
         "version": "3.0",
@@ -245,8 +251,37 @@
             "ref": "fadbfe33303a76e25cb63401050439aa9b1a9c7f"
         }
     },
+    "symfony/messenger": {
+        "version": "4.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "4.3",
+            "ref": "29716c100e8aef803ad72670deb3dc09bb052a64"
+        },
+        "files": [
+            "config/packages/messenger.yaml"
+        ]
+    },
     "symfony/mime": {
         "version": "v4.3.2"
+    },
+    "symfony/monolog-bridge": {
+        "version": "v4.3.2"
+    },
+    "symfony/monolog-bundle": {
+        "version": "3.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "3.3",
+            "ref": "6240c6d43e8237a32452f057f81816820fd56ab6"
+        },
+        "files": [
+            "config/packages/dev/monolog.yaml",
+            "config/packages/prod/monolog.yaml",
+            "config/packages/test/monolog.yaml"
+        ]
     },
     "symfony/options-resolver": {
         "version": "v4.0.6"

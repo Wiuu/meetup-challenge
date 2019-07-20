@@ -2,7 +2,7 @@
 
 namespace App\MeetVonq\Infrastructure\User;
 
-use App\MeetVonq\Domain\User\Contract\UserRepositoryInterface;
+use App\MeetVonq\Domain\User\UserRepositoryInterface;
 use App\MeetVonq\App\Support\AppEntityRepository;
 
 class UserRepository extends AppEntityRepository implements UserRepositoryInterface
