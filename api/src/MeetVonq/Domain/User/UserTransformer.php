@@ -5,7 +5,7 @@ namespace App\MeetVonq\Domain\User;
 use App\MeetVonq\Domain\User\Entity\User;
 use League\Fractal\TransformerAbstract;
 
-class UserTransformer extends  TransformerAbstract
+class UserTransformer extends TransformerAbstract
 {
 
     public function transform(User $user)

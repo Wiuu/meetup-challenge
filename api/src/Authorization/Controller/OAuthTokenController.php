@@ -2,6 +2,7 @@
 
 namespace App\Authorization\Controller;
 
+use App\MeetVonq\App\Support\FractalService;
 use FOS\OAuthServerBundle\Controller\TokenController;
 use FOS\OAuthServerBundle\Model\TokenInterface;
 use Nelmio\ApiDocBundle\Annotation\Operation;
@@ -9,16 +10,32 @@ use Swagger\Annotations as SWG;
 use Symfony\Component\HttpFoundation\Request;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Symfony\Component\HttpFoundation\JsonResponse;
 
 /**
  * Class OAuthTokenController
  * @package App\Authorization\Controller
  */
-class OAuthTokenController extends TokenController {
+class OAuthTokenController extends TokenController
+{
+
+    /**
+     * @var FractalService
+     */
+    private $fractalService;
+
+    public function __construct(
+        FractalService $fractalService
+    )
+    {
+
+        $this->fractalService = $fractalService;
+    }
+
     /**
      * Get access token
      * @param Request $request
-     * @return TokenInterface
+     * @return JsonResponse
      *
      * @Route("/oauth/v2/token")
      * @Method({"POST","GET"})
@@ -106,6 +123,7 @@ class OAuthTokenController extends TokenController {
             $request->request->set('grant_type', 'client_credentials');
         }
 
-        return parent::tokenAction($request);
+//        return parent::tokenAction($request);
+        return new JsonResponse($this->fractalService->transform(parent::tokenAction($request)));
     }
 }

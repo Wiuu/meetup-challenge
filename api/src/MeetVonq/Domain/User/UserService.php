@@ -1,16 +1,11 @@
 <?php
-
-
 namespace App\MeetVonq\Domain\User;
-
 
 use App\MeetVonq\App\Support\FractalService;
 use App\MeetVonq\Domain\User\Entity\User;
-use App\MeetVonq\Infrastructure\User\UserRepository;
 use Doctrine\Common\Persistence\ObjectManager;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityNotFoundException;
-use Gedmo\Exception;
 use League\Fractal\Pagination\PagerfantaPaginatorAdapter;
 use League\Fractal\Resource\Collection;
 use League\Fractal\Resource\Item;
@@ -54,6 +49,11 @@ class UserService
         $this->om = $om;
     }
 
+    /**
+     * @param Request $request
+     * @param RouterInterface $router
+     * @return Collection
+     */
     public function listUsers(Request $request, RouterInterface $router)
     {
         $page = NULL !== $request->get('page') ? (int) $request->get('page') : 1;
@@ -81,6 +81,11 @@ class UserService
         return $resource;
     }
 
+    /**
+     * @param $id
+     * @return Item
+     * @throws EntityNotFoundException
+     */
     public function getUserById($id)
     {
         $user = $this->entityManager->getRepository(User::class)->find($id);
@@ -93,6 +98,10 @@ class UserService
 
     }
 
+    /**
+     * @param Request $request
+     * @return Item
+     */
     public function createNewUser(Request $request)
     {
         $user = new User();

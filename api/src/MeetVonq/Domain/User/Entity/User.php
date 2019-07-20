@@ -2,7 +2,8 @@
 
 namespace App\MeetVonq\Domain\User\Entity;
 
-class User {
+class User
+{
 
     /**
      * @var integer

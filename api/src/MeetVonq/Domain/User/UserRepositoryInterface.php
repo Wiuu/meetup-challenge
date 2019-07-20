@@ -1,6 +1,5 @@
 <?php
-namespace  App\MeetVonq\Domain\User\Contract;
-
+namespace  App\MeetVonq\Domain\User;
 
 interface UserRepositoryInterface
 {
